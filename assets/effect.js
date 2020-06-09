@@ -1,8 +1,10 @@
+
 $(window).load(function(){
 	$('.loading').fadeOut('fast');
 	$('.container').fadeIn('fast');
 });
 $('document').ready(function(){
+	var audio;
 		var vw;
 		$(window).resize(function(){
 			 vw = $(window).width()/2;
@@ -29,7 +31,7 @@ $('document').ready(function(){
 		});
 	});
 	$('#play').click(function(){
-		var audio = $('.song')[0];
+		audio = $('.song')[0];
         audio.play();
         $('#bulb_yellow').addClass('bulb-glow-yellow-after');
 		$('#bulb_red').addClass('bulb-glow-red-after');
@@ -165,6 +167,11 @@ $('document').ready(function(){
 	});
 	
 	$('#story').click(function(){
+
+		var audio = $('.song')[0];
+        audio.pause();
+		var audio_2 = $('.song_2')[0];
+        audio_2.play();
 		$(this).fadeOut('slow');
 		$('.cake').fadeOut('fast').promise().done(function(){
 			$('.message').fadeIn('slow');
@@ -175,7 +182,7 @@ $('document').ready(function(){
 		function msgLoop (i) {
 			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
 			i=i+1;
-			$("p:nth-child("+i+")").fadeIn('slow').delay(1000);
+			$("p:nth-child("+i+")").fadeIn('slow').delay(3000);
 			if(i==50){
 				$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
 					$('.cake').fadeIn('fast');
